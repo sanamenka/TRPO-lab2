@@ -1,6 +1,11 @@
-#include "javaprintoperatorunit.h"
+#ifndef JAVAPRINTOPERATORUNIT_CPP
+#define JAVAPRINTOPERATORUNIT_CPP
 
-JavaPrintOperatorUnit::JavaPrintOperatorUnit()
+
+class JavaPrintOperatorUnit
 {
+public:
+    JavaPrintOperatorUnit();
+};
 
-}
+#endif // JAVAPRINTOPERATORUNIT_CPP

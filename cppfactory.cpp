@@ -4,13 +4,13 @@
 
 class CppFactory : public AbstractFactory {
 public:
-    std::shared_ptr<MethodUnit> createMethodUnit(const std::string& name, const std::string& returnType, Flags flags) const override {
+    std::shared_ptr<MethodUnit> createMethodUnit(const std::string& name, const std::string& returnType, unsigned int flags) const {
         return std::make_shared<CppMethodUnit>(name, returnType, flags);
     }
-    std::shared_ptr<ClassUnit> createClassUnit(const std::string& name) const override {
+    std::shared_ptr<ClassUnit> createClassUnit(const std::string& name) const {
         return std::make_shared<CppClassUnit>(name);
     }
-    std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) const override {
+    std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) const {
         return std::make_shared<CppPrintOperatorUnit>(text);
     }
 };

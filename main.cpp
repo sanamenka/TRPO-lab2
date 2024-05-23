@@ -1,32 +1,43 @@
 #include <iostream>
-#include "ClassUnit.cpp"
-#include "methodunit.cpp"
-#include "printoperatorunit.cpp"
+#include "CppFactory.cpp"
+#include "CSFactory.cpp"
+#include "JavaFactory.cpp"
 
-std::string generateProgram() {
-    ClassUnit myClass( "MyClass" );
-    myClass.add(
-        std::make_shared< MethodUnit >( "testFunc1", "void", 0 ),
-        ClassUnit::PUBLIC
-        );
-    myClass.add(
-        std::make_shared< MethodUnit >( "testFunc2", "void", MethodUnit::STATIC ),
-        ClassUnit::PRIVATE
-        );
-    myClass.add(
-        std::make_shared< MethodUnit >( "testFunc3", "void", MethodUnit::VIRTUAL |
-                                                              MethodUnit::CONST ),
-        ClassUnit::PUBLIC
-        );
-    auto method = std::make_shared< MethodUnit >( "testFunc4", "void",
-                                               MethodUnit::STATIC );
-    method->add( std::make_shared< PrintOperatorUnit >( R"(Hello, world!\n)" ) );
-    myClass.add( method, ClassUnit::PROTECTED );
-    return myClass.compile();
+// Функция для создания класса с использованием указанной фабрики
+void createAndCompileClass(const std::shared_ptr<AbstractFactory>& factory) {
+    // Создание объектов классов, методов и операторов вывода с использованием фабрики
+    std::shared_ptr<ClassUnit> classUnit = factory->createClassUnit("testClass");
+    std::shared_ptr<MethodUnit> methodUnit1 = factory->createMethodUnit("testFunc1", "void", 1);
+    std::shared_ptr<MethodUnit> methodUnit2 = factory->createMethodUnit("testFunc2", "void", 0);
+    std::shared_ptr<MethodUnit> methodUnit3 = factory->createMethodUnit("testFunc3", "void", 0);
+    std::shared_ptr<PrintOperatorUnit> printOperatorUnit = factory->createPrintOperatorUnit(R"(Hello, world!\n)");
+
+    methodUnit2->add(printOperatorUnit);
+
+    classUnit->add(methodUnit1, ClassUnit::AccessModifier::PUBLIC);
+    classUnit->add(methodUnit2, ClassUnit::AccessModifier::PUBLIC);
+    classUnit->add(methodUnit3, ClassUnit::AccessModifier::PUBLIC);
+
+    std::cout << classUnit->compile() << std::endl;
 }
 
-int main()
-{
-    cout << "Hello World!" << endl;
+int main() {
+
+    std::shared_ptr<AbstractFactory> factoryCpp = std::make_shared<CppFactory>();
+    std::shared_ptr<AbstractFactory> factoryCsharp = std::make_shared<CSFactory>();
+    std::shared_ptr<AbstractFactory> factoryJava = std::make_shared<JavaFactory>();
+
+    std::cout << "Class on c++:" << std::endl << std::endl;
+    // Использование функции createAndCompileClass с указателем на фабрику для C++
+    createAndCompileClass(factoryCpp);
+
+    std::cout << "Class on c#:" << std::endl << std::endl;
+    // Использование функции createAndCompileClass с указателем на фабрику для C#
+    createAndCompileClass(factoryCsharp);
+
+    std::cout << "Class on Java:" << std::endl << std::endl;
+    // Использование функции createAndCompileClass с указателем на фабрику для Java
+    createAndCompileClass(factoryJava);
+
     return 0;
 }

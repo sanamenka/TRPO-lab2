@@ -1,6 +1,11 @@
-#include "javamethodunit.h"
+#ifndef JAVAMETHODUNIT_CPP
+#define JAVAMETHODUNIT_CPP
 
-JavaMethodUnit::JavaMethodUnit()
+
+class JavaMethodUnit
 {
+public:
+    JavaMethodUnit();
+};
 
-}
+#endif // JAVAMETHODUNIT_CPP

@@ -1,6 +1,11 @@
-#include "javaclassunit.h"
+#ifndef JAVACLASSUNIT_CPP
+#define JAVACLASSUNIT_CPP
 
-JavaClassUnit::JavaClassUnit()
+
+class JavaClassUnit
 {
+public:
+    JavaClassUnit();
+};
 
-}
+#endif // JAVACLASSUNIT_CPP

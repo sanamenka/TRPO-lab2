@@ -1,6 +1,11 @@
-#include "csprintoperatorunit.h"
+#ifndef CSPRINTOPERATORUNIT_CPP
+#define CSPRINTOPERATORUNIT_CPP
 
-CSPrintOperatorUnit::CSPrintOperatorUnit()
+
+class CSPrintOperatorUnit
 {
+public:
+    CSPrintOperatorUnit();
+};
 
-}
+#endif // CSPRINTOPERATORUNIT_CPP

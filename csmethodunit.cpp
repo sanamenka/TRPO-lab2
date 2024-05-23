@@ -1,6 +1,11 @@
-#include "csmethodunit.h"
+#ifndef CSMETHODUNIT_CPP
+#define CSMETHODUNIT_CPP
 
-CSMethodUnit::CSMethodUnit()
+
+class CSMethodUnit
 {
+public:
+    CSMethodUnit();
+};
 
-}
+#endif // CSMETHODUNIT_CPP
