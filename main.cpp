@@ -1,7 +1,7 @@
 #include <iostream>
-#include "ClassUnit.h"
-#include "methodunit.h"
-#include "printoperatorunit.h"
+#include "ClassUnit.cpp"
+#include "methodunit.cpp"
+#include "printoperatorunit.cpp"
 
 std::string generateProgram() {
     ClassUnit myClass( "MyClass" );
