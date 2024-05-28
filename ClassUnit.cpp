@@ -13,18 +13,18 @@ public:
         PRIVATE_PROTECTED,
         FILE,
         INTERNAL,
-        PROTECTED_INTERNAL
+        PROTECTED_INTERNAL,
+        DEFAULT
     };
 
-    const std::vector<std::string> ACCESS_MODIFIERS  = {"public", "protected", "private"};
+    const std::vector<std::string> ACCESS_MODIFIERS  = {
+"public", "protected", "private", "private protected", "file", "internal", "protected_internal","default"
+    };
 
-    // Конструктор класса ClassUnit
-    // Устанавливает размер вектора m_fields равным количеству доступных модификаторов класса
     explicit ClassUnit(const std::string &name) : m_name(name) {
         m_fields.resize(ACCESS_MODIFIERS.size());
     }
 
-    // Метод для добавления вложенных элементов
     void add( const std::shared_ptr< Unit >& unit, Flags flags )
     {
         unsigned int accessModifier = 0;
@@ -35,7 +35,7 @@ public:
     }
 
 
-    // Объявление псевдонима Fields для std::vector<std::shared_ptr<Unit>>
+
     using Fields = std::vector<std::shared_ptr<Unit>>;
 
 protected:

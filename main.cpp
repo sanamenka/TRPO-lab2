@@ -28,16 +28,16 @@ int main() {
     std::shared_ptr<AbstractFactory> factoryJava = std::make_shared<JavaFactory>();
 
 
-    std::cout << "Class on c++:" << std::endl << std::endl;
-    // Использование функции createAndCompileClass с указателем на фабрику для C++
+    std::cout << "Class on C++:" << std::endl << std::endl;
+
     createAndCompileClass(factoryCpp);
 
-    std::cout << "Class on c#:" << std::endl << std::endl;
-    // Использование функции createAndCompileClass с указателем на фабрику для C#
+    std::cout << "Class on C#:" << std::endl << std::endl;
+
     createAndCompileClass(factoryCsharp);
 
     std::cout << "Class on Java:" << std::endl << std::endl;
-    // Использование функции createAndCompileClass с указателем на фабрику для Java
+
     createAndCompileClass(factoryJava);
 
     return 0;
