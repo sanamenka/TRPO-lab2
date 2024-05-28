@@ -2,7 +2,7 @@
 #define JAVAPRINTOPERATORUNIT_CPP
 #include "printoperatorunit.cpp"
 
-class JavaPrintOperator : public PrintOperatorUnit
+class JavaPrintOperatorUnit : public PrintOperatorUnit
 {
 public:
     explicit JavaPrintOperator( const std::string& text ) : PrintOperatorUnit(text) { }

@@ -2,7 +2,7 @@
 #define CSCLASSUNIT_CPP
 #include "ClassUnit.cpp"
 
-class CsharpClassUnit : public ClassUnit {
+class CSClassUnit : public ClassUnit {
 public:
     enum AccessModifier {
         PUBLIC,
@@ -19,7 +19,7 @@ public:
     };
 
 
-    explicit CsharpClassUnit(const std::string &name) : ClassUnit(name)
+    explicit CSClassUnit(const std::string &name) : ClassUnit(name)
     {
         m_fields.resize(ACCESS_MODIFIERS.size());
     }

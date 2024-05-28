@@ -2,7 +2,7 @@
 #define CPPPRINTOPERATORUNIT_CPP
 #include "printoperatorunit.cpp"
 
-class CppPrintOperator : public PrintOperatorUnit
+class CppPrintOperatorUnit : public PrintOperatorUnit
 {
 public:
     explicit CppPrintOperator( const std::string& text ) : PrintOperatorUnit(text) { }

@@ -1,5 +1,6 @@
 #ifndef ABSTRACTFACTORY_CPP
 #define ABSTRACTFACTORY_CPP
+#include <iostream>
 #include "Unit.cpp"
 #include "ClassUnit.cpp"
 #include "PrintOperatorUnit.cpp"
@@ -20,7 +21,7 @@ class AbstractFactory
 {
 public:
     virtual ~AbstractFactory() {}
-    // Методы создания объектов классов, методов и операторов вывода
+
     virtual std::shared_ptr<ClassUnit> createClassUnit(const std::string& name) = 0;
     virtual std::shared_ptr<MethodUnit> createMethodUnit(const std::string& name, const std::string& returnType, int flags) = 0;
     virtual std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) = 0;
