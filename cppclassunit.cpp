@@ -1,5 +1,5 @@
-#ifndef CPPCLASSUNIT_H
-#define CPPCLASSUNIT_H
+#ifndef CPPCLASSUNIT_CPP
+#define CPPCLASSUNIT_CPP
 #include "ClassUnit.cpp"
 
 class CppClassUnit : public ClassUnit{
@@ -13,8 +13,9 @@ public:
     const std::vector<std::string> ACCESS_MODIFIERS  = {"public", "protected", "private"};
 
 
-    explicit CppClassUnit(const std::string &name) : ClassUnit(name) {}
-
+    explicit CppClassUnit(const std::string &name) : ClassUnit(name) {
+        m_fields.resize(ACCESS_MODIFIERS.size());
+    }
 
     void add(const std::shared_ptr<Unit> &unit, Flags flags)
     {
@@ -38,11 +39,12 @@ public:
             }
             for (const auto &f: m_fields[i])
             {
-                result += ACCESS_MODIFIERS[i] + f->compile(level + 1) + "\n";
+                result += ACCESS_MODIFIERS[i] + f->compile(level + 1);
             }
+            result += "\n";
         }
         result += generateShift(level) + "};\n";
         return result;
     }
 };
-#endif // CPPCLASSUNIT_H
+#endif // CPPCLASSUNIT_CPP

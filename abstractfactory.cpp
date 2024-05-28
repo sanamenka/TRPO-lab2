@@ -1,5 +1,5 @@
-#ifndef ABSTRACTFACTORY_H
-#define ABSTRACTFACTORY_H
+#ifndef ABSTRACTFACTORY_CPP
+#define ABSTRACTFACTORY_CPP
 #include "Unit.cpp"
 #include "ClassUnit.cpp"
 #include "PrintOperatorUnit.cpp"
@@ -26,4 +26,4 @@ public:
     virtual std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) = 0;
 };
 
-#endif // ABSTRACTFACTORY_H
+#endif // ABSTRACTFACTORY_CPP
