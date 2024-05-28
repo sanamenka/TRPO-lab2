@@ -2,15 +2,16 @@
 #define JAVAMETHODUNIT_CPP
 #include "MethodUnit.cpp"
 
-class CppMethodUnit : public MethodUnit {
+class JavaMethodUnit : public MethodUnit {
 public:
-    enum Modifier {
+    enum Modifier
+    {
         STATIC = 1,
-        CONST = 1 << 1,
-        VIRTUAL = 1 << 2,
+        FINAL = 1 << 1,
+        ABSTRACT = 1 << 2,
     };
 
-    explicit CppMethodUnit(const std::string &name, const std::string &returnType, Flags flags)
+    explicit JavaMethodUnit(const std::string &name, const std::string &returnType, Flags flags)
         : MethodUnit(name, returnType, flags) {}
 
 
@@ -19,22 +20,23 @@ public:
 
         std::string result = generateShift(level);
 
-        if (m_flags & VIRTUAL)
+        if (m_flags & ABSTRACT)
         {
-            result += "virtual ";
+            result += "abstract ";
+        }
+
+        if (m_flags & FINAL)
+        {
+            result += "final ";
         }
 
         if (m_flags & STATIC)
         {
             result += "static ";
         }
+
         result += m_returnType + " ";
         result += m_name + "()";
-
-        if (m_flags & CONST)
-        {
-            result += " const";
-        }
         result += " {\n";
 
         for (const auto &b: m_body)
