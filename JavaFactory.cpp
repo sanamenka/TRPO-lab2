@@ -1,7 +1,11 @@
 #ifndef JAVAFACTORY_CPP
 #define JAVAFACTORY_CPP
 #include "abstractfactory.cpp"
+#include "JavaClassUnit.cpp"
+#include "JavaMethodUnit.cpp"
+#include "JavaPrintOperatorUnit.cpp"
 
+// Класс фабрики для языка Java
 class JavaFactory : public AbstractFactory {
 public:
     std::shared_ptr<ClassUnit> createClassUnit(const std::string& name)

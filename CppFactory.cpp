@@ -1,7 +1,11 @@
 #ifndef CPPFACTORY_CPP
 #define CPPFACTORY_CPP
 #include "abstractfactory.cpp"
+#include "CppClassUnit.cpp"
+#include "CppMethodUnit.cpp"
+#include "CppPrintOperatorUnit.cpp"
 
+// Класс фабрики для языка C++
 class CppFactory : public AbstractFactory {
 public:
     std::shared_ptr<ClassUnit> createClassUnit(const std::string& name) {

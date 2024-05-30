@@ -28,17 +28,16 @@ public:
         m_fields[accessModifier].push_back(unit);
     }
 
+    // метод представления класса с его подэлементами, учитывая модификаторы доступа. level - уровень вложенности
     virtual std::string compile(unsigned int level = 0) const
     {
-        std::string result = "class " + m_name + " {\n";
-        for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i)
-        {
-            if (m_fields[i].empty())
-            {
+        std::string result = "class " + m_name + " {\n"; // в result будем сохраняем сгенерированную строку
+        for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i){ // цикл прохода по доступным модификаторам
+            if (m_fields[i].empty()){ // если пусто - идем дальше
                 continue;
             }
-            for (const auto &f: m_fields[i])
-            {
+            result += ACCESS_MODIFIERS[i] + ":\n";
+            for (const auto &f: m_fields[i]){
                 result += ACCESS_MODIFIERS[i] + f->compile(level + 1);
             }
             result += "\n";

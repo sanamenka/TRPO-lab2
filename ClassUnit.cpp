@@ -4,9 +4,9 @@
 #include <memory>
 #include <vector>
 
-class ClassUnit : public Unit {
+class ClassUnit : public Unit { // реализация элемента Класс
 public:
-    enum AccessModifier {
+    enum AccessModifier { // модификаторы доступа
         PUBLIC,
         PROTECTED,
         PRIVATE,
@@ -18,17 +18,18 @@ public:
     };
 
     const std::vector<std::string> ACCESS_MODIFIERS  = {
-"public", "protected", "private", "private protected", "file", "internal", "protected_internal","default"
+    "public", "protected", "private", "private protected", "file", "internal", "protected_internal","default"
     };
-
-    explicit ClassUnit(const std::string &name) : m_name(name) {
+    // explicit предотвращает неявное преобразование типов при инициализации
+    explicit ClassUnit(const std::string &name) : m_name(name) // конструктор
+    {
         m_fields.resize(ACCESS_MODIFIERS.size());
     }
 
-    void add( const std::shared_ptr< Unit >& unit, Flags flags )
+    void add( const std::shared_ptr< Unit >& unit, Flags flags ) // метод для добавления вложенных элементов
     {
-        unsigned int accessModifier = 0;
-        if( flags < ACCESS_MODIFIERS.size() ) {
+        unsigned int accessModifier = 0; // модификатор по умолчанию
+        if( flags < ACCESS_MODIFIERS.size() ) { // Проверяем корректность flags и устанавливаем accessModifier в значение flags
             accessModifier = flags;
         }
         m_fields[accessModifier].push_back(unit);
