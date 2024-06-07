@@ -6,8 +6,8 @@ class CSMethodUnit : public MethodUnit {
 public:
     enum Modifier {
         STATIC = 1,
-        ABSTRACT = 2 << 1,
-        VIRTUAL = 3 << 2,
+        ABSTRACT = 1 << 1,
+        VIRTUAL = 1 << 2,
     };
 
     explicit CSMethodUnit(const std::string &name, const std::string &returnType, Flags flags)

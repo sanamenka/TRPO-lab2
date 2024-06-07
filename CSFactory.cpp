@@ -1,7 +1,11 @@
 #ifndef CSFACTORY_CPP
 #define CSFACTORY_CPP
 #include "abstractfactory.cpp"
+#include "CSClassUnit.cpp"
+#include "CSMethodUnit.cpp"
+#include "CSPrintOperatorUnit.cpp"
 
+// Класс фабрики для языка C#
 class CSFactory : public AbstractFactory
 {
 public:

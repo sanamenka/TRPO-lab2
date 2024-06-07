@@ -5,10 +5,10 @@
 
 class PrintOperatorUnit : public Unit {
 public:
-    explicit PrintOperatorUnit( const std::string& text ) : m_text( text ) { }
+    explicit PrintOperatorUnit( const std::string& text ) : m_text( text ) { } // конструктор инициализирует строку m_text
 
 protected:
-    std::string m_text;
+    std::string m_text; // строка хранения нашего текста для вывода
 };
 
 #endif // PRINTOPERATORUNIT_CPP
