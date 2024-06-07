@@ -11,7 +11,7 @@ void GenerateProgram(const std::shared_ptr<AbstractFactory>& factory) { // Пр�
     std::shared_ptr<MethodUnit> methodUnit1 = factory->createMethodUnit("testFunc1", "void", 0);
     std::shared_ptr<MethodUnit> methodUnit2 = factory->createMethodUnit("testFunc2", "void", 1);
     std::shared_ptr<MethodUnit> methodUnit3 = factory->createMethodUnit("testFunc3", "void", 100 | 10000);
-    std::shared_ptr<MethodUnit> methodUnit4 = factory->createMethodUnit("testFunc4", "void", 0);
+    std::shared_ptr<MethodUnit> methodUnit4 = factory->createMethodUnit("testFunc4", "void", 1);
     std::shared_ptr<PrintOperatorUnit> printOperatorUnit = factory->createPrintOperatorUnit(R"(Hello, world!\n)");
 
     methodUnit2->add(printOperatorUnit);
