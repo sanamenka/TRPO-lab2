@@ -17,7 +17,7 @@ public:
         m_fields.resize(ACCESS_MODIFIERS.size());
     }
 
-    void add(const std::shared_ptr<Unit> &unit, Flags flags)
+    void add(const std::shared_ptr<Unit> &unit, Flags flags) // Метод для добавления вложенных файлов
     {
         int accessModifier = PRIVATE;
 
@@ -28,21 +28,25 @@ public:
         m_fields[accessModifier].push_back(unit);
     }
 
-    // метод представления класса с его подэлементами, учитывая модификаторы доступа. level - уровень вложенности
+    // Метод для генерации кода. level - уровень вложенности
     virtual std::string compile(unsigned int level = 0) const
     {
         std::string result = "class " + m_name + " {\n"; // в result будем сохраняем сгенерированную строку
         for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i){ // цикл прохода по доступным модификаторам
-            if (m_fields[i].empty()){ // если пусто - идем дальше
+            // если вектор, содержащий подэлементы класса для текущего модификатора пуст - идем дальше
+            if (m_fields[i].empty()){
                 continue;
             }
+            // для С++ добавляем ключевое слово модификатора (public: и тд)
             result += ACCESS_MODIFIERS[i] + ":\n";
+
+            // если не пуст, то перебираются все элементы вектора m_fields и формируется строка для каждого подэлемента класса
             for (const auto &f: m_fields[i]){
-                result += ACCESS_MODIFIERS[i] + f->compile(level + 1);
+                result +=f->compile(level + 1);
             }
             result += "\n";
         }
-        result += generateShift(level) + "};\n";
+        result += generateShift(level) + "};\n"; // завершение формирования строки
         return result;
     }
 };

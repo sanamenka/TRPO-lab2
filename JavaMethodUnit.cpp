@@ -7,8 +7,8 @@ public:
     enum Modifier
     {
         STATIC = 1,
-        FINAL = 1 << 1,
-        ABSTRACT = 1 << 2,
+        ABSTRACT = 1 << 1,
+        FINAL = 1 << 3,
     };
 
     explicit JavaMethodUnit(const std::string &name, const std::string &returnType, Flags flags)

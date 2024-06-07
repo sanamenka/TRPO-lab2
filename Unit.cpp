@@ -13,7 +13,7 @@ public:
         throw std::runtime_error("Not supported");
     }
 
-    virtual std::string compile(unsigned int level = 0) const = 0; // Метод для генерации кода
+    virtual std::string compile(unsigned int level = 0) const = 0; // Метод для генерации кода, level - уровень вложенности
 
 protected:
     virtual std::string generateShift(unsigned int level) const // Метод который возвращает строку с пробелом
